@@ -58,9 +58,7 @@ async function getAccountsAPI() {
 
     const response = await fetch(url)
 
-    return response.json().then(data=>{
-      return data
-      })
+    return response.json()
 }
 
 
@@ -83,8 +81,7 @@ function balances(exercicio, accounts, greatherThan){
 
     //3)- O número de contas com mais de 100 reais de saldo na agência 33 é:
 function totalAccounts(exercicio, accounts, greatherThan, agencyNum){
-  let result = Object.values(accounts.filter(item=>item.agencia == agencyNum)
-                                     .filter(item=>item.balance > greatherThan))
+  let result = Object.values(accounts.filter(item=>item.agencia == agencyNum & item.balance > greatherThan))
                                      .length
   console.log(exercicio + 'O número de contas com mais de ' + greatherThan + 
                           ' reais de saldo na agência '+ agencyNum + ' é: ' + result )
