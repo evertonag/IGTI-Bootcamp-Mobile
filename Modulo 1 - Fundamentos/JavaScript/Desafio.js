@@ -202,7 +202,9 @@ function getTotalCustomers(exercicio, accounts, agency){
 
     //11)- Quantos clientes que tem Maria no nome estão na agencia 47?
 function getCustomerByName(exercicio, accounts, custName, agency){
-  let total = accounts.filter((item) => item.agencia == agency && item.name.startsWith('Maria')).length
+  //Busca nomes que tenham a palavra Maria (se quisesse um nome começando com 
+  //a palavra Maria, teríamos que utilizar o item.name.startsWith)
+  let total = accounts.filter((item) => item.agencia == agency && item.name.includes('Maria')).length
 
   console.log( exercicio + 'Há ' + total + 
               ' cliente(s) com o nome Maria na agência ' + agency)
@@ -212,8 +214,8 @@ function getCustomerByName(exercicio, accounts, custName, agency){
 function getNextAccountId(exercicio, accounts){
   let next
   //Calcula o próximo número de conta
-  next = accounts.sort((a, b) => b.conta - a.conta)[0].conta + 1
-  
+  next = accounts.sort((a, b) => b.id - a.id)[0].id + 1
+
   console.log( exercicio + 
               'Considerando que o id deve ser único e é sequencial, ' + 
               'o próximo id possível para conta seria ' + 
